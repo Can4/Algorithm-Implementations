@@ -1,4 +1,4 @@
-``` C
+``` c
 // Queue implementation with arrays in C
 #include <stdio.h>
 #define MAX 10
