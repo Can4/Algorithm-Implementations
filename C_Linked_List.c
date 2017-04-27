@@ -96,16 +96,16 @@ list deleteElem(int e,list head){
         forward = temp->next;       // forward will be the next node from temp
         if (temp->zahl == e) {      // if the number is the one we want to delete
 
-            if (temp == head){      // and if temp is still at the head node , meaning we deleted all nodes we checked till now
-                                    // or we are just starting to delete
+            if (temp == head){      // and if temp is still at the head node 
+                                    // meaning we deleted all nodes we checked till now or we are just starting to delete
                 head = head->next;  // adjusting the head pointer to the next node because we will delete the head node
                 free(temp);         // delete the node that temp points to
                 prev = forward;     // set the prev pointer to the next node
             }
             // if we didnt delete a node already
             else {
-                prev->next = forward;   // adjust the links so it wont point to the node that will be deleted, but it will point to the next one
-                free(temp);             // delete the node
+                prev->next = forward;   // adjust the links so it wont point to the node that will be deleted
+                free(temp);             // but it will point to the next onedelete the node
             }
         }
         else {              // if the number of the node is not equal to "e"
@@ -158,8 +158,8 @@ list deleteN(int index,list head){
         temp1 = temp1->next;
         if(temp1->next == NULL){            // checking if the index is between 0 and lenth of the list -1
             printf("Wrong index !\n");      // because in the next step we will set temp2 to temp1->next
-            return head;                    // if temp1->next is NULL then we will get an error, trying to access a NULL pointer
-        }                                   // by doing temp2->next (while temp2 is NULL)
+            return head;                    // if temp1->next is NULL then we will get an error
+        }                                   // trying to access a NULL pointer by doing temp2->next (while temp2 is NULL)
     }
     list temp2 = temp1->next;
     temp1->next = temp2->next;
