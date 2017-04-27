@@ -94,7 +94,7 @@ list deleteElem(int e,list head){
 
     while(temp != NULL) {
         forward = temp->next;       // forward will be the next node from temp
-        if (temp->zahl == e) {      // if the number is the one we want to delete
+        if (temp->zahl == e) {      // checking if the number is the one that we want to delete
 
             if (temp == head){      // and if temp is still at the head node 
                                     // meaning we deleted all nodes we checked till now or we are just starting to delete
@@ -102,7 +102,7 @@ list deleteElem(int e,list head){
                 free(temp);         // delete the node that temp points to
                 prev = forward;     // set the prev pointer to the next node
             }
-            // if we didnt delete a node already
+            // if we didnt delete a node already / if we skipped a node
             else {
                 prev->next = forward;   // adjust the links so it wont point to the node that will be deleted
                 free(temp);             // but it will point to the next onedelete the node
@@ -117,6 +117,7 @@ list deleteElem(int e,list head){
 }
 
 // This function looks if the list is ordered ascanding or descending
+// input 1 checks for asc and input 0 checks desc ( or vice versa :D )
 int sorted(int zahl,list head){
     int temp;                               // our temporary number holder
     temp = head->zahl;
@@ -185,15 +186,6 @@ int main(void) {
 
 
 
-
-
-
-
-
-
-
-
-
    /* int zahl = 5;
     printf("The list before deletion of the number : %d\n",zahl);
     printList(head); nl
@@ -207,8 +199,6 @@ int main(void) {
 
     head = NULL;
     printList(head);    */
-
-
 
 
 
