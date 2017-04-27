@@ -21,7 +21,7 @@ list insert (int v,list l){
         neu->next = l;
         return neu;
 }
-// Deleting the first element / node of the list and returning the 2. element
+// Deleting the first element / node of the list
 list deleteHead (list l){
         if (l == NULL) return l;
         list neu = l->next;
