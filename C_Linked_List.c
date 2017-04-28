@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -96,7 +95,7 @@ list deleteElem(int e,list head){
         forward = temp->next;       // forward will be the next node from temp
         if (temp->zahl == e) {      // checking if the number is the one that we want to delete
 
-            if (temp == head){      // and if temp is still at the head node 
+            if (temp == head){      // and if temp is still at the head node
                                     // meaning we deleted all nodes we checked till now or we are just starting to delete
                 head = head->next;  // adjusting the head pointer to the next node because we will delete the head node
                 free(temp);         // delete the node that temp points to
@@ -166,37 +165,77 @@ list deleteN(int index,list head){
     temp1->next = temp2->next;
     free(temp2);
     return head;
-
-
 }
+
+// returns an element at a given index
+int get(int index,list head) {
+    if(index < 0) {
+        printf("Wrong index !\n");
+        return -1;
+    }
+    list temp = head;
+    int i = 0;
+    while (i < index){
+        temp = temp->next;
+        i += 1;
+        if(temp == NULL){
+            printf("Wrong index !\n");
+            return -1;
+        }
+    }
+    return temp->zahl;
+}
+
+// returns the concatination of 2 given lists
+list concat(list seq1,list seq2){
+    if(seq1 == NULL){
+        return seq2;
+    }
+    list temp = seq1;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = seq2;
+    return seq1;
+}
+
+
+
 
 int main(void) {
 
     list head = NULL;
+    list head2 = NULL;
 
+    
 
-    head = insert (44,head);
-    head = insert (33,head);
-    head = insert (22,head);
-    head = insert (11,head);
+    head2 = insert (88,head2);
+    head2 = insert (77,head2);
+    head2 = insert (66,head2);
+    head2 = insert (55,head2);
+
+    printf("first list : ");
     printList(head);
-    printf("Deleting at index %d\n",INDEX);
+    printf("second list : ");
+    printList(head2);
+    printf("concat : ");
+    head = concat(head,head2);
+    printList(head);
+
+/*    printf("Deleting at index %d\n",INDEX);
     head = deleteN(INDEX,head);
     printList(head);
-
-
+    printf("Calling get function with index -2 : %d\n",get(-2,head));
+*/
 
    /* int zahl = 5;
     printf("The list before deletion of the number : %d\n",zahl);
     printList(head); nl
-
     head = deleteElem(zahl,head);
     printf("The list after deletion of the number : %d\n",zahl);
     printList(head); nl nl
-
     head = reverse(head);
     printList(head); nl
-
     head = NULL;
     printList(head);    */
 
