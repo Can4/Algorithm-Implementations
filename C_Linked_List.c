@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #define nl printf("\n");
-#define INDEX 4
+#define INDEX 0
 
 // Defining our structure and typedefing it
 typedef struct le {
@@ -150,7 +150,7 @@ list deleteN(int index,list head){
             printf("The list is empty\n");
             return head;
         }
-        head = temp1->next;
+        head = head->next;
         free(temp1);
         return head;
     }
@@ -192,9 +192,9 @@ list concat(list seq1,list seq2){
         return seq2;
     }
     list temp = seq1;
-    while (temp->next != NULL) {
-        temp = temp->next;
-    }
+    while (temp->next != NULL) {            // setting temp to the last list element
+        temp = temp->next;                  // it will stop when we reach the last list element
+    }                                       // because the last element's .next will be NULL
     temp->next = seq2;
     return seq1;
 }
@@ -207,13 +207,23 @@ int main(void) {
     list head = NULL;
     list head2 = NULL;
 
-    
+    head = insert (44,head);
+    head = insert (33,head);
+    head = insert (22,head);
+    head = insert (11,head);
 
     head2 = insert (88,head2);
     head2 = insert (77,head2);
     head2 = insert (66,head2);
     head2 = insert (55,head2);
+    printList(head2);
 
+    printf("Deleting at index %d\n",INDEX);
+    head2 = deleteN(INDEX,head2);
+    printList(head2);
+    printf("Calling get function with index 2 : %d\n",get(2,head2));
+
+    printf("\n");
     printf("first list : ");
     printList(head);
     printf("second list : ");
@@ -222,11 +232,6 @@ int main(void) {
     head = concat(head,head2);
     printList(head);
 
-/*    printf("Deleting at index %d\n",INDEX);
-    head = deleteN(INDEX,head);
-    printList(head);
-    printf("Calling get function with index -2 : %d\n",get(-2,head));
-*/
 
    /* int zahl = 5;
     printf("The list before deletion of the number : %d\n",zahl);
