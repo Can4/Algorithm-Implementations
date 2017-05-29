@@ -16,6 +16,7 @@ def Partition(A,start,end):
     A[pIndex],A[end] = A[end],A[pIndex]
     return pIndex
 
+
 B = [7,2,1,6,8,5,3,4]
 print("B before Quick Sort : {}".format(B))
 Quick_Sort(B,0,7)
